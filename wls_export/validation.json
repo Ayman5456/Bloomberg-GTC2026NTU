@@ -1,0 +1,40 @@
+{
+  "file": "wls_export\\WLS_Stocks_2026-10-09.xlsx",
+  "expected_members": 10419,
+  "exported_rows": 10419,
+  "review_rows": 2,
+  "missing_by_field": {
+    "ID_EXCH_SYMBOL": 1,
+    "LONG_COMP_NAME": 0,
+    "PRIMARY_EXCHANGE_NAME": 1,
+    "ID_MIC_PRIM_EXCH": 1
+  },
+  "duplicate_ticker_mic_groups": 0,
+  "sample": [
+    {
+      "ticker": "TXG",
+      "name": "10X Genomics Inc",
+      "exchange": "NASDAQ GS"
+    },
+    {
+      "ticker": "2656",
+      "name": "160 Health International Ltd",
+      "exchange": "Hong Kong"
+    },
+    {
+      "ticker": "SRCE",
+      "name": "1st Source Corp",
+      "exchange": "NASDAQ GS"
+    },
+    {
+      "ticker": "2GB",
+      "name": "2G Energy AG",
+      "exchange": "Xetra"
+    },
+    {
+      "ticker": "360ONE",
+      "name": "360 ONE WAM Ltd",
+      "exchange": "Natl India"
+    }
+  ]
+}
