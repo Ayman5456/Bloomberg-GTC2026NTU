@@ -1,0 +1,45 @@
+Bloomberg GTC setup status - 9 October 2026
+
+Prepared locally:
+- Bloomberg C++ SDK 3.26.9.1: vendor\blpapi_cpp_3.26.9.1
+  Includes headers, Windows import libraries, runtime DLLs, and examples.
+- Python BLPAPI wheel: downloads\blpapi-3.26.9.1-py3-none-win_amd64.whl
+  SHA256 verified against Bloomberg's package index:
+  623458f7738766fbb188fff7cae688b3adf6bc18f9ec9a1b0c9d046f21147d8e
+- check_bloomberg.py and check_bloomberg.cpp: connection-only checks.
+  These send no security-data requests or subscriptions.
+
+Verified after the user installed Python:
+- Python 3.14.8 (64-bit) is available.
+- Project virtual environment: .venv
+- Python BLPAPI 3.26.9.1 installed from the verified local wheel.
+- check_bloomberg.py passed: session started and //blp/refdata opened.
+- No market-data requests or subscriptions were sent.
+- Security and field entitlements remain untested.
+
+Still not installed or verified:
+- C++ compiler: no compiler found on PATH or in standard Visual Studio locations.
+  A separate C++ build environment is required to compile the C++ example.
+- The C++ check has not been compiled or run.
+
+To repeat the successful Python connection check, run from this project:
+.\.venv\Scripts\python.exe .\check_bloomberg.py
+
+Python BLPAPI bundles its native library; no separate C++ compiler is required
+for the Python wheel. Pip may need internet access for any dependencies.
+
+After an approved MSVC C++ installation, open an x64 Native Tools Command
+Prompt and change to this project directory. Compile:
+cl /EHsc /I"vendor\blpapi_cpp_3.26.9.1\include" check_bloomberg.cpp "vendor\blpapi_cpp_3.26.9.1\lib\blpapi3_64.lib" /Fe:check_bloomberg.exe
+
+In that same command prompt, add the SDK runtime directory for that session:
+set "PATH=%CD%\vendor\blpapi_cpp_3.26.9.1\bin;%PATH%"
+check_bloomberg.exe
+
+Keep Bloomberg Terminal open and signed in. A successful connection-only
+check does not establish entitlements for any particular security or field.
+
+Official package sources:
+https://professional.bloomberg.com/support/api-library/
+https://blpapi.bloomberg.com/repository/releases/python/simple/blpapi/
+https://blpapi.bloomberg.com/download/releases/raw/files/blpapi_cpp_3.26.9.1-windows.zip
